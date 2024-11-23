@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Liquidación Laboral - Perú</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #d4d2c9, #f1f0e5);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 70px 0;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+        .header p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+        .logo span {
+            color: #2b87b6;
+        }
+        .form-section {
+            margin-bottom: 25px;
+        }
+        .form-control {
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 1.1rem;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .form-label {
+            font-weight: 600;
+        }
+        .btn-primary {
+            background: #5a5a5a;
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            border-radius: 8px;
+        }
+        .btn-primary:hover {
+            background: #777777;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            border: none;
+            margin-bottom: 30px;
+        }
+        .card-header {
+            background-color: #2b87b6;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+        }
+        .card-body {
+            background-color: #ffffff;
+            padding: 30px;
+            font-size: 1.1rem;
+        }
+        footer {
+            text-align: center;
+            font-size: 1rem;
+            padding: 20px;
+            background: #333;
+            color: white;
+            margin-top: 40px;
+        }
+        footer p {
+            margin: 0;
+            line-height: 1.6;
+        }
+        .dedicatoria {
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: 500;
+            margin-top: 40px;
+            text-align: center;
+            padding: 10px;
+        }
+        .dedicatoria strong {
+            color: #2b87b6;
+        }
+        .result-card {
+            margin-top: 30px;
+        }
+        .result-card .card-header {
+            background-color: #28a745;
+            color: white;
+        }
+        .result-card .card-body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .footer-section {
+            margin-top: 40px;
+        }
+        .sticker {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .sticker a {
+            text-decoration: none;
+            color: #fff;
+            background: #ff6347;
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+        .sticker a:hover {
+            background: #e53e36;
+        }
+        .motivational {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fffbcc;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo"><span>Suma</span>TuPaga</div>
+            <h1>Calculadora de Liquidación Laboral en Perú</h1>
+            <p>
+                Bienvenido a la calculadora de liquidación laboral, una herramienta pensada para ayudar a los trabajadores peruanos a conocer con exactitud los beneficios laborales que les corresponden por ley, como la Compensación por Tiempo de Servicios (CTS), Gratificaciones y Vacaciones Truncas. 
+                <br><br>
+                Con esta herramienta podrás determinar cuánto te deben por estos conceptos antes de tu cese laboral. Evita ser engañado por empleadores inescrupulosos y obtén un cálculo transparente y justo basado en las fechas de inicio y fin de tu trabajo. 
+                <br><br>
+                Además, si estás afiliado a la AFP o ONP, podrás incluir este dato para obtener un cálculo más preciso. ¡Comencemos!
+            </p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Formulario de Cálculo</div>
+                    <div class="card-body">
+                        <form id="liquidacionForm">
+                            <div class="form-section">
+                                <label for="nombres" class="form-label">Nombres y Apellidos:</label>
+                                <input type="text" id="nombres" class="form-control" placeholder="Ejemplo: Juan Pérez" required>
+                            </div>
+
+                            <div class="form-section">
+                                <label for="fechaInicio" class="form-label">Fecha de Inicio:</label>
+                                <input type="date" id="fechaInicio" class="form-control" required>
+                            </div>
+
+                            <div class="form-section">
+                                <label for="fechaFin" class="form-label">Fecha de Cese:</label>
+                                <input type="date" id="fechaFin" class="form-control" required>
+                            </div>
+
+                            <div class="form-section">
+                                <label for="sueldo" class="form-label">Sueldo Mensual (S/):</label>
+                                <input type="number" id="sueldo" class="form-control" placeholder="Ejemplo: 1500" required>
+                            </div>
+
+                            <!-- Pregunta sobre AFP o ONP -->
+                            <div class="form-section">
+                                <label class="form-label">¿Estás afiliado a AFP o ONP?</label><br>
+                                <input type="radio" name="afpOnp" value="afp" checked> AFP
+                                <input type="radio" name="afpOnp" value="onp"> ONP
+                                <input type="radio" name="afpOnp" value="ninguno"> Ninguno
+                            </div>
+
+                            <!-- Pregunta sobre CTS -->
+                            <div class="form-section">
+                                <label>¿Te pagaron la CTS?</label><br>
+                                <input type="radio" name="ctsPagada" value="si" checked> Sí
+                                <input type="radio" name="ctsPagada" value="no"> No
+                            </div>
+
+                            <!-- Pregunta sobre Gratificaciones -->
+                            <div class="form-section">
+                                <label>¿Te pagaron las Gratificaciones?</label><br>
+                                <input type="radio" name="gratiPagada" value="si" checked> Sí
+                                <input type="radio" name="gratiPagada" value="no"> No
+                            </div>
+
+                            <!-- Pregunta sobre Vacaciones -->
+                            <div class="form-section">
+                                <label>¿Te pagaron las Vacaciones?</label><br>
+                                <input type="radio" name="vacPagada" value="si" checked> Sí
+                                <input type="radio" name="vacPagada" value="no"> No
+                            </div>
+
+                            <div class="form-section">
+                                <button type="button" class="btn btn-primary" onclick="calcularLiquidacion()">Calcular</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="resultado" class="result-card"></div>
+
+                <!-- Sticker con mensaje -->
+                <div id="sticker" class="sticker"></div>
+
+                <!-- Frases motivadoras -->
+                <div id="motivational" class="motivational"></div>
+            </div>
+        </div>
+
+        <div class="dedicatoria">
+            <p><strong>Quiero agradecer enormemente</strong> a Jimena Isabel Merino, quien ha creído en mí y en mi potencial desde el principio. Gracias por tu apoyo incondicional, por estar siempre ahí para impulsarme a seguir adelante. También a mi madre, Marleny Cotrina Tirado, por su amor y apoyo incansable; sin ellas, este proyecto nunca hubiera sido posible. Y, por último, a mí mismo, por no rendirme y hacer realidad este sueño.</p>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 SumaTuPaga - Todos los derechos reservados. Desarrollado por Hugo Joel Yalta Cotrina</p>
+        </footer>
+    </div>
+
+    <script>
+        const frasesMotivadoras = [
+            "¡Nunca es tarde para comenzar de nuevo!",
+            "¡Lo que no te mata, te hace más fuerte!",
+            "¡Si caes, levántate y vuelve a intentarlo!",
+            "¡Hoy es un buen día para empezar algo nuevo!",
+            "¡La vida es 10% lo que te sucede y 90% cómo reaccionas!",
+            "¡Hazlo con pasión o no lo hagas!",
+            "¡Un paso a la vez, y llegarás lejos!",
+            "¡El éxito no es la clave de la felicidad, la felicidad es la clave del éxito!",
+            "¡No te rindas, cada intento te acerca más al éxito!"
+        ];
+
+        function getFraseAleatoria() {
+            const indice = Math.floor(Math.random() * frasesMotivadoras.length);
+            return frasesMotivadoras[indice];
+        }
+
+        function calcularLiquidacion() {
+            const nombres = document.getElementById("nombres").value;
+            const fechaInicio = new Date(document.getElementById("fechaInicio").value);
+            const fechaFin = new Date(document.getElementById("fechaFin").value);
+            const sueldo = parseFloat(document.getElementById("sueldo").value);
+
+            const diasLaborados = (fechaFin - fechaInicio) / (1000 * 3600 * 24);
+            const mesesLaborados = Math.floor(diasLaborados / 30);
+            const restoDias = diasLaborados % 30;
+
+            const ctsAdeudado = (document.querySelector('input[name="ctsPagada"]:checked').value === "no") ? sueldo / 6 * mesesLaborados : 0;
+            const gratiAdeudada = (document.querySelector('input[name="gratiPagada"]:checked').value === "no") ? sueldo / 12 * mesesLaborados : 0;
+            const vacAdeudada = (document.querySelector('input[name="vacPagada"]:checked').value === "no") ? sueldo / 30 * restoDias : 0;
+
+            const total = ctsAdeudado + gratiAdeudada + vacAdeudada;
+
+            document.getElementById("resultado").innerHTML = `
+                <div class="card">
+                    <div class="card-header">Resultado de Cálculo</div>
+                    <div class="card-body">
+                        <p><strong>Meses y Días Laborados:</strong> ${mesesLaborados} meses y ${restoDias} días</p>
+                        <p><strong>Total CTS adeudado:</strong> S/ ${ctsAdeudado.toFixed(2)}</p>
+                        <p><strong>Total Gratificaciones adeudadas:</strong> S/ ${gratiAdeudada.toFixed(2)}</p>
+                        <p><strong>Total Vacaciones adeudadas:</strong> S/ ${vacAdeudada.toFixed(2)}</p>
+                        <p><strong>Total a pagar:</strong> S/ ${total.toFixed(2)}</p>
+                    </div>
+                </div>`;
+
+            let stickerText = "";
+            if (total >= 3000) {
+                stickerText = "¡A gastar 🤑!";
+            } else if (total >= 1500) {
+                stickerText = "¡A ahorrar 👌!";
+            } else {
+                stickerText = "¡A conseguir un trabajo nuevo rápido 💀!";
+            }
+
+            document.getElementById("sticker").innerHTML = `<div class="sticker">${stickerText}</div>`;
+            document.getElementById("motivational").innerText = getFraseAleatoria();
+        }
+    </script>
+</body>
+</html>
